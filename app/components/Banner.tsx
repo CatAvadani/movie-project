@@ -1,0 +1,39 @@
+// Banner.tsx
+import { Movie } from "@/typings"; // Adjust the path as per your project structure
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { baseUrl } from "../constants/movie";
+
+interface BannerProps {
+  movies?: Movie[];
+}
+
+const Banner = ({ movies }: BannerProps) => {
+  console.log("movies", movies);
+
+  const [movie, setMovie] = useState<Movie | null>(null);
+
+  useEffect(() => {
+    if (movies && movies.length > 0) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      setMovie(movies[randomIndex]);
+    }
+  }, [movies]);
+
+  if (!movies || movies.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className='banner-container'>
+      <Image
+        src={`${baseUrl}${movie?.backdrop_path}`}
+        alt='Banner'
+        layout='fill'
+        objectFit='cover'
+      />
+    </div>
+  );
+};
+
+export default Banner;
