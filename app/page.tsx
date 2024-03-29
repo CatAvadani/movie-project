@@ -2,6 +2,7 @@
 import { MovieCategory } from "@/typings"; // Adjust the path as per your project structure
 import { useEffect, useState } from "react";
 import Banner from "./components/Banner";
+import Row from "./components/Row";
 import requests from "./utils/requests";
 
 const Home = () => {
@@ -40,12 +41,20 @@ const Home = () => {
   }, []);
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <Banner movies={movieData?.fetchNetflixOriginals} />
-      {/* Row */}
-      {/* Row */}
-      {/* Row */}
-    </main>
+    <div className='relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]'>
+      <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16 '>
+        <Banner movies={movieData?.fetchNetflixOriginals} />
+        <section>
+          <Row title='Trending Now' movies={movieData?.fetchTrending} />
+          <Row title='Top Rated' movies={movieData?.fetchTopRated} />
+          <Row title='Action Thrillers' movies={movieData?.fetchActionMovies} />
+          <Row title='Comedies' movies={movieData?.fetchComedyMovies} />
+          <Row title='Scary Movies' movies={movieData?.fetchHorrorMovies} />
+          <Row title='Romance Movies' movies={movieData?.fetchRomanceMovies} />
+          <Row title='Documentaries' movies={movieData?.fetchDocumentaries} />
+        </section>
+      </main>
+    </div>
   );
 };
 
