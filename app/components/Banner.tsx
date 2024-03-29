@@ -32,15 +32,6 @@ const Banner = ({ movies }: BannerProps) => {
         layout='fill'
         objectFit='cover'
       />
-      <div className='banner-content'>
-        <h1 className='banner-title'>{movie?.title || movie?.name}</h1>
-        <div className='banner-buttons'>
-          <button className='banner-button'>Play</button>
-          <button className='banner-button'>My List</button>
-        </div>
-        <h1 className='banner-description'>{movie?.overview}</h1>
-      </div>
-      <div className='banner-fadeBottom' />
     </div>
   );
 };
