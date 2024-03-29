@@ -1,26 +1,13 @@
 "use client";
-
-import { Movie } from "@/typings";
+import { MovieCategory } from "@/typings"; // Adjust the path as per your project structure
 import { useEffect, useState } from "react";
 import Banner from "./components/Banner";
 import requests from "./utils/requests";
-interface MovieCategory {
-  results: Movie[];
-}
-
-interface MovieData {
-  fetchNetflixOriginals?: MovieCategory;
-  fetchTrending?: MovieCategory;
-  fetchTopRated?: MovieCategory;
-  fetchActionMovies?: MovieCategory;
-  fetchComedyMovies?: MovieCategory;
-  fetchHorrorMovies?: MovieCategory;
-  fetchRomanceMovies?: MovieCategory;
-  fetchDocumentaries?: MovieCategory;
-}
 
 const Home = () => {
-  const [movieData, setMovieData] = useState<MovieData>({});
+  const [movieData, setMovieData] = useState<MovieCategory | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,13 +23,12 @@ const Home = () => {
           )
         );
 
-        const dataByKey = Object.keys(requests).reduce<MovieData>(
-          (acc, key, index) => {
-            acc[key as keyof MovieData] = data[index].results;
-            return acc;
-          },
-          {}
-        );
+        const dataByKey: MovieCategory = Object.keys(
+          requests
+        ).reduce<MovieCategory>((acc, key, index) => {
+          acc[key as keyof MovieCategory] = data[index].results;
+          return acc;
+        }, {} as MovieCategory);
 
         setMovieData(dataByKey);
       } catch (error) {
@@ -55,57 +41,12 @@ const Home = () => {
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <Banner />
-      <section>
-        {movieData.fetchNetflixOriginals &&
-          movieData.fetchNetflixOriginals.map((movie: any) => (
-            <div key={movie.id}>
-              <h1>{movie.title}</h1>
-              <p>{movie.release_date}</p>
-
-              {/* <Image
-                width={100}
-                height={100}
-                src={movie.poster_path}
-                alt='img'
-              ></Image> */}
-            </div>
-          ))}
-      </section>
+      <Banner movies={movieData?.fetchNetflixOriginals} />
+      {/* Row */}
+      {/* Row */}
+      {/* Row */}
     </main>
-    // modal
   );
 };
-export default Home;
-//     netflixOriginals,
-//     trendingNow,
-//     topRated,
-//     actionMovies,
-//     comedyMovies,
-//     horrorMovies,
-//     romanceMovies,
-//     documentaries,
-//   ] = await Promise.all([
-//     fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
-//     fetch(requests.fetchTrending).then((res) => res.json()),
-//     fetch(requests.fetchTopRated).then((res) => res.json()),
-//     fetch(requests.fetchActionMovies).then((res) => res.json()),
-//     fetch(requests.fetchComedyMovies).then((res) => res.json()),
-//     fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-//     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-//     fetch(requests.fetchDocumentaries).then((res) => res.json()),
-//   ]);
 
-//   return {
-//     props: {
-//       netflixOriginals: netflixOriginals.results,
-//       trendingNow: trendingNow.results,
-//       topRated: topRated.results,
-//       actionMovies: actionMovies.results,
-//       comedyMovies: comedyMovies.results,
-//       horrorMovies: horrorMovies.results,
-//       romanceMovies: romanceMovies.results,
-//       documentaries: documentaries.results,
-//     },
-//   };
-// };
+export default Home;

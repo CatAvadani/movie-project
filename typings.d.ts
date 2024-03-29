@@ -3,6 +3,16 @@ export interface Genre {
   name: string;
 }
 
+export interface MovieCategory {
+  fetchTrending: Movie[];
+  fetchTopRated: Movie[];
+  fetchActionMovies: Movie[];
+  fetchComedyMovies: Movie[];
+  fetchHorrorMovies: Movie[];
+  fetchRomanceMovies: Movie[];
+  fetchDocumentaries: Movie[];
+  fetchNetflixOriginals: Movie[];
+}
 export interface Movie {
   title: string;
   backdrop_path: string;
