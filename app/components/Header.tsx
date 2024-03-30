@@ -1,5 +1,4 @@
 "use client";
-import { UserIcon } from "@heroicons/react/24/outline";
 import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,7 +40,13 @@ export default function Header() {
         <p className='hidden lg:inline'>Kids</p>
         <BellIcon className='w-6 h-6' />
         <Link href='/account'>
-          <UserIcon className='w-6 h-6' />
+          <Image
+            src='https://rb.gy/g1pwyx'
+            alt=''
+            className='cursor-pointer rounded'
+            width={40}
+            height={40}
+          />
         </Link>
       </div>
     </header>

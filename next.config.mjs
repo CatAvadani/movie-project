@@ -2,21 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["image.tmdb.org"],
+    domains: ["image.tmdb.org", "rb.gy"],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/(.*)",
-  //       headers: [
-  //         {
-  //           key: "X-Content-Type-Options",
-  //           value: "nosniff",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
 };
 
 export default nextConfig;
