@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movie App
 
-## Getting Started
+Live Demo:
 
-First, run the development server:
+https://movie-project-three-gamma.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Movie Showcase App is an application designed to mimic the core functionalities of a streaming platform like Netflix. This project served as an opportunity to put into practice and deepen my understanding of Next.js, Typescript, TailwindCSS, and Firebase Authentication, including its server-side rendering capabilities, routing system, and overall React framework enhancements. By developing this app, I have gained hands-on experience with modern web development techniques and a better grasp of user interface design principles. Users of the app can enjoy a seamless browsing experience with dynamically loaded movie categories, detailed views of movie banners, and a rich interface similar to commercial streaming services.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Dynamic movie showcase similar to Netflix
+- Server-side rendered pages for improved SEO and performance
+- Responsive design for a seamless experience across all devices
+- Integration with a movie database API to display real-time movie data
 
-## Learn More
+## Technology 
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 
+- React 
+- TypeScript 
+- TailwindCSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Setup Instructions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1.  Clone the repository:
 
-## Deploy on Vercel
+        
+           git clone https://github.com/CatAvadani/movie-project.git
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Navigate to the project directory:
+   cd movie-project
+
+3. Install dependencies:
+   npm install
+
+4. Start the development server:
+   npm run dev
+
+5. Open http://localhost:3000 with your browser to see the result.
+
