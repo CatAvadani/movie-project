@@ -21,6 +21,7 @@ The Movie Showcase App is an application designed to mimic the core functionalit
 - React 
 - TypeScript 
 - TailwindCSS
+- Firebase
 
 ## Setup Instructions
 
