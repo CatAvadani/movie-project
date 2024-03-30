@@ -39,7 +39,7 @@ export default function Header() {
         <MagnifyingGlassIcon className=' hidden sm:inline w-6 h-6' />
         <p className='hidden lg:inline'>Kids</p>
         <BellIcon className='w-6 h-6' />
-        <Link href='/account'>
+        <Link href='/login'>
           <Image
             src='https://rb.gy/g1pwyx'
             alt=''
