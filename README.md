@@ -24,6 +24,10 @@ The Movie Showcase App is an application designed to mimic the core functionalit
 - TailwindCSS
 - Firebase
 
+## Api
+  
+ https://www.themoviedb.org/
+
 ## Setup Instructions
 
 1.  Clone the repository:
