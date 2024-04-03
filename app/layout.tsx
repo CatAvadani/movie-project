@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "./components/Header";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import Header from './components/Header';
+import './globals.css';
+import { AuthProvider } from './hooks/useAuth';
 
 export const metadata: Metadata = {
-  title: "Movie App",
-  description: "A simple movie app",
+  title: 'Movie App',
+  description: 'A simple movie app',
 };
 
 export default function RootLayout({
@@ -18,8 +18,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <Header />
-        <div>{children}</div>
+        <Head>
+          <title>Movie App</title>
+          <Link rel='icon' href='/favicon.ico' />
+        </Head>
+        {/* HOC - higher order components */}
+        <AuthProvider>
+          <Header />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,11 +1,13 @@
-"use client";
-import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+'use client';
+import { BellIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import useAuth from '../hooks/useAuth';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     // use this when the component mounts
@@ -17,16 +19,19 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handelScroll);
+    window.addEventListener('scroll', handelScroll);
 
     return () => {
-      window.removeEventListener("scroll", handelScroll);
+      window.removeEventListener('scroll', handelScroll);
     };
   }, []);
   return (
-    <header className={`${isScrolled && "bg-[#141414]"}`}>
+    <header className={`${isScrolled && 'bg-[#141414]'}`}>
       <div className='flex items-center space-x-2 md:space-x-10'>
-        <Image src='/logo-red.svg' alt='logo' width={200} height={200} />
+        <Link href='/'>
+          {' '}
+          <Image src='/logo-red.svg' alt='logo' width={200} height={200} />
+        </Link>
         <ul className=' hidden space-x-4 md:flex'>
           <li className='headerLink'>Home</li>
           <li className='headerLink'>TV Show</li>
@@ -39,15 +44,16 @@ export default function Header() {
         <MagnifyingGlassIcon className=' hidden sm:inline w-6 h-6' />
         <p className='hidden lg:inline'>Kids</p>
         <BellIcon className='w-6 h-6' />
-        <Link href='/account'>
-          <Image
-            src='https://rb.gy/g1pwyx'
-            alt=''
-            className='cursor-pointer rounded'
-            width={40}
-            height={40}
-          />
-        </Link>
+        {/* <Link href='/login'> */}
+        <Image
+          onClick={logout}
+          src='https://rb.gy/g1pwyx'
+          alt=''
+          className='cursor-pointer rounded'
+          width={40}
+          height={40}
+        />
+        {/* </Link> */}
       </div>
     </header>
   );
