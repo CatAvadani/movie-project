@@ -1,14 +1,16 @@
-"use client";
-import { MovieCategory } from "@/typings"; // Adjust the path as per your project structure
-import { useEffect, useState } from "react";
-import Banner from "./components/Banner";
-import Row from "./components/Row";
-import requests from "./utils/requests";
+'use client';
+import { MovieCategory } from '@/typings';
+import { useEffect, useState } from 'react';
+import Banner from './components/Banner';
+import Row from './components/Row';
+import useAuth from './hooks/useAuth';
+import requests from './utils/requests';
 
 const Home = () => {
   const [movieData, setMovieData] = useState<MovieCategory | undefined>(
     undefined
   );
+  const { logout, loading } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +19,7 @@ const Home = () => {
           Object.values(requests).map((endpoint) =>
             fetch(endpoint).then((response) => {
               if (!response.ok) {
-                throw new Error("Network response was not ok");
+                throw new Error('Network response was not ok');
               }
               return response.json();
             })
@@ -33,12 +35,14 @@ const Home = () => {
 
         setMovieData(dataByKey);
       } catch (error) {
-        console.error("There was an error fetching the data:", error);
+        console.error('There was an error fetching the data:', error);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) return null;
 
   return (
     <div className='relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]'>
