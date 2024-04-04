@@ -1,7 +1,7 @@
-import { Movie } from "@/typings";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { useRef, useState } from "react";
-import MovieCard from "./MovieCard";
+import { Movie } from '@/typings';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { useRef, useState } from 'react';
+import MovieCard from './MovieCard';
 
 interface Props {
   title: string;
@@ -18,13 +18,13 @@ export default function Row({ title, movies }: Props) {
       const { scrollLeft, clientWidth } = rowRef.current;
 
       const scrollTo =
-        direction === "right"
+        direction === 'right'
           ? scrollLeft + clientWidth
           : scrollLeft - clientWidth;
 
       rowRef.current.scrollTo({
         left: scrollTo,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -37,9 +37,9 @@ export default function Row({ title, movies }: Props) {
       <div className='group relative md:-ml-2'>
         <ChevronLeftIcon
           className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
-            !isScrolled && "hidden"
+            !isScrolled && 'hidden'
           }`}
-          onClick={() => handleClick("left")}
+          onClick={() => handleClick('left')}
         />
         <div
           ref={rowRef}
@@ -51,7 +51,7 @@ export default function Row({ title, movies }: Props) {
 
         <ChevronRightIcon
           className='absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100'
-          onClick={() => handleClick("right")}
+          onClick={() => handleClick('right')}
         />
       </div>
     </div>

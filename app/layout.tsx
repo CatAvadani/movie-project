@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from './components/Header';
 import './globals.css';
-import { AuthProvider } from './hooks/useAuth';
+import Providers from './Providers';
 
 export const metadata: Metadata = {
   title: 'Movie App',
@@ -22,11 +22,10 @@ export default function RootLayout({
           <title>Movie App</title>
           <Link rel='icon' href='/favicon.ico' />
         </Head>
-        {/* HOC - higher order components */}
-        <AuthProvider>
+        <Providers>
           <Header />
           {children}
-        </AuthProvider>
+        </Providers>
       </body>
     </html>
   );
