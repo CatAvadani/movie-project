@@ -1,7 +1,10 @@
 'use client';
 import { MovieCategory } from '@/typings';
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { modalState } from './atoms/modalAtom';
 import Banner from './components/Banner';
+import Modal from './components/Modal';
 import Row from './components/Row';
 import useAuth from './hooks/useAuth';
 import requests from './utils/requests';
@@ -10,7 +13,8 @@ const Home = () => {
   const [movieData, setMovieData] = useState<MovieCategory | undefined>(
     undefined
   );
-  const { logout, loading } = useAuth();
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +62,7 @@ const Home = () => {
           <Row title='Documentaries' movies={movieData?.fetchDocumentaries} />
         </section>
       </main>
+      {showModal && <Modal />}
     </div>
   );
 };
