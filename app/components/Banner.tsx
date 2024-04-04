@@ -12,8 +12,6 @@ interface BannerProps {
 }
 
 const Banner = ({ movies }: BannerProps) => {
-  console.log('movies', movies);
-
   const [movie, setMovie] = useState<Movie | null>(null);
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
